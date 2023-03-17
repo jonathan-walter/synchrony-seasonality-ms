@@ -16,6 +16,6 @@ simmod_alt_sameenv.R is an alternate formulation of the main model used for comp
 simmod_main_arEnv.R is an elaboration of the main model where the environmental noises have autoregressive (AR) temporal structure. It is used to produce Figures S10 and S11.
 
 There are four data files that facilitate the exploration of cross-season synchrony between environmental drivers.
-These data are taken from the PRISM interpolated climate dataset at 1000 randomly selected geographic coordinates in the conterminous United States and reflect time series of seasonally aggregated (mean for temperature, sum for precipitation) temperature and precipitation from 1990 to 2009 (20 years).
+These data are taken from the PRISM [https://prism.oregonstate.edu] interpolated (4 km grid) climate dataset at 1000 randomly selected geographic coordinates in the conterminous United States and reflect time series of seasonally aggregated (mean for temperature, sum for precipitation) temperature and precipitation from 1990 to 2009 (20 years).
 Summer was June-July-August and Winter was December-January-February.
 Each is in wide format with each row corresponding to a location and each column corresponding to a year.
