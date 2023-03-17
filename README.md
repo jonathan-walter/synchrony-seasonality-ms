@@ -3,7 +3,9 @@ Data and code accompanying Walter et al. (2023) Seasonality in environment and p
 
 There are four main code files and several helper code files that contain functions for simulation models.
 The main code files are analytical_results.R, simulation_studies.R, sim_analytical_comparison.R, and cross_synchrony.R.
-analytical_results.R explores our analytical solution and reproduces Figures 1 and 2.
+\begin{enumerate}
+\item{analytical_results.R explores our analytical solution and reproduces Figures 1 and 2.}
+\end{enumerate}
 simulation_studies.R runs simulation studies and reproduces Figures 3-5 and S2-S11.
 sim_analytical_comparison.R examines consistency between our approximate analytical solution and simulation studies where some assumptions facilitating a tractable analytical solution are relaxed. This script reproduces Figure S1.
 cross_sychrony.R assesses evidence for synchrony between environmental drivers (average temperature and total precipitation) in different seasons (winter and summer). It reproduces results reported in Online Appendix B.
