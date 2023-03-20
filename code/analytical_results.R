@@ -110,8 +110,8 @@ regime.check <- function(inlist){
 
 
 #### define parameters across runs ####
-tmax = 2000
-burn = 1000
+tmax = 2000 #simulation length
+burn = 1000 #burn-in period
 
 #### Plotting set up ####
 
@@ -123,15 +123,15 @@ par(mfrow=c(3,1), mar=c(3,1.5,1.5,.5), mgp=c(2.7,0.5,0), tcl=-0.3, oma=c(2,3,1,1
 # text(0.0,1.08,"a)", xpd=NA)
 
 #### eB eW heat map ####
-f0 = 1.6
-kB = 100
-s0 = 0
-kW = 50
-cor.ebew = 0.2
-sd.e = 0.01
-cor.ebij = seq(0, 1, .05)
-cor.ewij = seq(0, 1, .05)
-dfrac = 0
+f0 = 1.6 #density-independent growth rate
+kB = 100 #breeding season density dependence
+s0 = 0 #survival rate
+kW = 50 #overwintering density dependence
+cor.ebew = 0.2 #cross-season environmental correlation
+sd.e = 0.01 #environmental variability
+cor.ebij = seq(0, 1, .05) #breeding season environmental correlation
+cor.ewij = seq(0, 1, .05) #overwintering season environmental correlation
+dfrac = 0 #dispersal fraction
 
 results.a <- matrix(NA, nrow=length(cor.ebij), ncol=length(cor.ewij))
 

@@ -12,8 +12,6 @@ library(parallel)
 library(lhs)
 library(dplyr)
 library(viridis)
-library(party)
-library(randomForest)
 
 ## source and define helper functions -------------------------------------------------------------
 source("simmod_main.R")
@@ -111,28 +109,28 @@ analytical.solution<-function(f0, kB, s0, kW, cor.ebij, cor.ewij, cor.ebew, sd.e
 
 ## Simulation -- sensitivity of synchrony to model parameters --------------------------------------------------------
 
-test <- simmod_main(tmax=500, f0=2.45, kB=200, s0=-1, kW=200, cor.ebij=0.25, cor.ewij=0.25, cor.ebew=0.1,
-                    sd.e=0.1, dfrac=0)
-
-plot(test$Nt[-c(1:100),1], type="l")
+# quick test of model
+# test <- simmod_main(tmax=500, f0=2.45, kB=200, s0=-1, kW=200, cor.ebij=0.25, cor.ewij=0.25, cor.ebew=0.1,
+#                     sd.e=0.1, dfrac=0)
+# plot(test$Nt[-c(1:100),1], type="l")
 
 nn<-300
 set.seed(666)
-#hypercube<-optimumLHS(n=nn, k=9)
+hypercube<-optimumLHS(n=nn, k=9)
 #saveRDS(hypercube, "hypercube.rds") #this takes a long time, so optionally save it and load it using the next line
-hypercube <- readRDS("/Users/jonathanwalter/Desktop/synchrony-seasonality code/hypercube.rds")
+#hypercube <- readRDS("/Users/jonathanwalter/Desktop/synchrony-seasonality code/hypercube.rds")
 
-
-f0=qunif(hypercube[,1],0.3,2.45) #maps hypercube onto distributions for parameter choices
-kB=qunif(hypercube[,2],10,200)
-s0=qunif(hypercube[,3],-0.9, 0)*f0
-kW=kB*qunif(hypercube[,4],0.1,1)
-cor.ebij=qunif(hypercube[,5],0,1)
-cor.ewij=qunif(hypercube[,6],0,1)
-sd.e=qunif(hypercube[,7],0,0.1)
-dfrac=qunif(hypercube[,8],0,0.2)
-cor.ebew=qunif(hypercube[,9],-0.5,0.5)
-cor.eij <- cor.ebij
+#maps hypercube onto distributions for parameter choices
+f0=qunif(hypercube[,1],0.3,2.45) #density-independent growth rate
+kB=qunif(hypercube[,2],10,200) #breeding season density dependence parameter
+s0=qunif(hypercube[,3],-0.9, 0)*f0 #density-independent overwintering survival rate
+kW=kB*qunif(hypercube[,4],0.1,1) #overwintering density dependence paramter
+cor.ebij=qunif(hypercube[,5],0,1) #correlation in breeding season environments
+cor.ewij=qunif(hypercube[,6],0,1) #correlation in overwintering season environments
+sd.e=qunif(hypercube[,7],0,0.1) #environmental variability
+dfrac=qunif(hypercube[,8],0,0.2) #dispersal praction
+cor.ebew=qunif(hypercube[,9],-0.5,0.5) #cross-season environmental correlation
+cor.eij <- cor.ebij #cross-season environmental correlation for same-environment formulation
 
 
 tmax=10000 #set max simulation timesteps
@@ -317,7 +315,7 @@ effects.comb.oc.ew <- left_join(effects.main.oc.ew, effects.nowint.oc.ew)
 effects.comb.oc.ew <- left_join(effects.comb.oc.ew, effects.sameenv.oc.ew)
 
 
-## Make a unified figure
+## Make a unified figure showing parameter sensitivity--this is Figure 3 in the main text
 
 param.names <- c(expression(italic('f')[0])
                  ,expression(italic('k'['B']))
@@ -381,20 +379,20 @@ dev.off()
 scentxt<-"set1" #undercompensatory
 
 #parameter set 1
-rho<-seq(0,1,by=0.05)
+rho<-seq(0,1,by=0.05) #range of synchrony values to test
 
-tmax = 2000
-burn = 1000
-f0 = 1
-kB = 100
-s0 = -0.1
-kW = 80
-cor.ebij = rep(expand.grid(rho,rho)[,1],each=75)
-cor.ewij = rep(expand.grid(rho,rho)[,2],each=75)
-cor.ebew = 0
-sd.e = 0.1
-dfrac = 0
-cor.eij = cor.ebij
+tmax = 2000 #simulation length
+burn = 1000 #burn-in period
+f0 = 1 #density-independent growth rate
+kB = 100 #breeding season density dependence parameter
+s0 = -0.1 #density-independent overwintering survival rate
+kW = 80 #overwintering season density dependence parameter
+cor.ebij = rep(expand.grid(rho,rho)[,1],each=75) #breeding season environmental correlations (replicated)
+cor.ewij = rep(expand.grid(rho,rho)[,2],each=75) #overwintering season environmental correlations (replicated)
+cor.ebew = 0 #cross-season environmental correlation
+sd.e = 0.1 #environmental variability
+dfrac = 0 #dispersal fraction
+cor.eij = cor.ebij #environmental correlations for same-environment model
 
 
 

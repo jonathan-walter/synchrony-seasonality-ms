@@ -139,21 +139,21 @@ analytical.solution<-function(f0, kB, s0, kW, cor.ebij, cor.ewij, cor.ebew, sd.e
 
 ###
 # parameters across runs
-tmax = 2000
-burn = 1000
-cor.ebij = seq(0, 1, .05)
-cor.ewij = seq(0, 1, .05)
+tmax = 2000 #length of sims
+burn = 1000 #burn-in period
+cor.ebij = seq(0, 1, .05) #breeding season environmental correlation
+cor.ewij = seq(0, 1, .05) #overwintering environmental correlation
 replicates <- 75  # change to 75 for final run
 
 ## multiple scenario run 1 --------------------------------------------------------------------
 # define parameters and run 
-f0 = 1.05
-kB = 50
-s0 = -0.2
-kW = 40
-cor.ebew = -.1
-sd.e = 0.02
-dfrac = 0
+f0 = 1.05 #density-independent growth rate
+kB = 50 #breeding season density dependence
+s0 = -0.2 #survival rate
+kW = 40 #overwintering season density dependence
+cor.ebew = -.1 #cross-season environmental correlation
+sd.e = 0.02 #environmental variability
+dfrac = 0 #dispersal
 
 results.a <- matrix(NA, nrow=length(cor.ebij), ncol=length(cor.ewij))
 simresults.a <- matrix(NA, nrow=length(cor.ebij), ncol=length(cor.ewij))
