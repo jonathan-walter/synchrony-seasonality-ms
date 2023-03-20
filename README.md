@@ -1,5 +1,7 @@
 # synchrony-seasonality-ms
-Data and code accompanying Walter et al. (2023) Seasonality in environment and population processes alters spatial synchrony. The American Naturalist. doi: TBA. This study uses theoretical models to explore how seasonality influences population spatial synchrony.
+Code and data accompanying Walter et al. (2023) Seasonality in environment and population processes alters spatial synchrony. The American Naturalist. doi: TBA. This study uses theoretical models to explore how seasonality influences population spatial synchrony.
+
+Contact: Jonathan Walter, jawalter@ucdavis.edu
 
 There are four main code files and several helper code files that contain functions for simulation models.
 The main code files are analytical_results.R, simulation_studies.R, sim_analytical_comparison.R, and cross_synchrony.R.
