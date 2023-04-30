@@ -3,9 +3,9 @@
 
 ## setup ------------------------------------------------------------------------------------------
 
-rm(list=ls())
+#rm(list=ls())
 
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+#setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 library(rootSolve)
 library(parallel)

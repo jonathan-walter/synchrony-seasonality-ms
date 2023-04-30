@@ -1,11 +1,11 @@
 ## investigating covariance between two environmental drivers in two locations
 ## using PRISM seasonal average temperature
 
-rm(list=ls())
+#rm(list=ls())
 
 library(wsyn)
 
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+#setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 ## Load datasets ----------------------------------------------------------------------------------
 summer_tavg <- as.matrix(read.csv("../data/summer_tavg.csv"))
