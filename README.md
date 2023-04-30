@@ -1,5 +1,7 @@
 # synchrony-seasonality-ms
-Data and code accompanying Walter et al. (2023) Seasonality in environment and population processes alters spatial synchrony. The American Naturalist. doi: TBA. This study uses theoretical models to explore how seasonality influences population spatial synchrony.
+Code and data accompanying Walter et al. (2023) Seasonality in environment and population processes alters spatial synchrony. The American Naturalist. doi: TBA. This study uses theoretical models to explore how seasonality influences population spatial synchrony.
+
+Contact: Jonathan Walter, jawalter@ucdavis.edu
 
 There are four main code files and several helper code files that contain functions for simulation models.
 The main code files are analytical_results.R, simulation_studies.R, sim_analytical_comparison.R, and cross_synchrony.R.
@@ -19,3 +21,6 @@ There are four data files that facilitate the exploration of cross-season synchr
 These data are taken from the PRISM [https://prism.oregonstate.edu] interpolated (4 km grid) climate dataset at 1000 randomly selected geographic coordinates in the conterminous United States and reflect time series of seasonally aggregated (mean for temperature, sum for precipitation) temperature and precipitation from 1990 to 2009 (20 years).
 Summer was June-July-August and Winter was December-January-February.
 Each is in wide format with each row corresponding to a location and each column corresponding to a year.
+
+Code was developed in R version 4.2.1 using the rootSolve (v1.8.3.2), mvtnorm (v1.1.3), wsyn (v1.0.4), parallel (v4.2.1), lhs (v1.1.5), dplyr (v1.0.9), and viridis (v0.6.2) packages in RStudio 2022.07.0+548 "Spotted Wakerobin" Release (34ea3031089fa4e38738a9256d6fa6d70629c822, 2022-07-06) for macOS
+Mozilla/5.0 (Macintosh; Intel Mac OS X 12_6_3) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.12.10 Chrome/69.0.3497.128 Safari/537.36.
